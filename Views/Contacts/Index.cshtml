@@ -1,0 +1,59 @@
+﻿@model IEnumerable<contactbook.Models.Contacts>
+
+@{
+    ViewData["Title"] = "All contacts";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Add new contact</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Birth)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Birth)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit contact</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">View contact</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete contact</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
